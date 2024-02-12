@@ -6,7 +6,7 @@ name = "pypi"
 [packages]
 django = "*"
 django-debug-toolbar = "*"
-mysqlclient = "*"
+psycopg2 = "*"
 djangorestframework = "*"
 drf-nested-routers = "*"
 django-filter = "*"
@@ -17,4 +17,4 @@ djangorestframework-simplejwt = "*"
 autopep8 = "*"
 
 [requires]
-python_version = "3.9"
+python_version = "*"

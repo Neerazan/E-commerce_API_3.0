@@ -115,7 +115,7 @@ class Address(models.Model):
 
 
 class Cart(models.Model):
-    id = models.UUIDField(primary_key=True, default=uuid4)
+    id = models.UUIDField(primary_key=True ,default=uuid4)
     created_at = models.DateTimeField(auto_now_add=True)
 
 
@@ -137,3 +137,4 @@ class Review(models.Model):
     name = models.CharField(max_length=255)
     description = models.TextField()
     date = models.DateField(auto_now_add=True)
+
