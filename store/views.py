@@ -17,7 +17,7 @@ from .serializers import AddCartItemSerializer, CartItemSerializer, CartSerializ
 
 
 class ProductViewSet(ModelViewSet):
-    queryset = Product.objects.all()
+    queryset = Product.objects.prefetch_related('images').all()
     serializer_class = ProductSerializer
     filter_backends = [DjangoFilterBackend, SearchFilter, OrderingFilter]
     filterset_class = ProductFilter
@@ -60,9 +60,9 @@ class ReviewViewSet(ModelViewSet):
 
 
 class CartViewSet(CreateModelMixin,
-                  RetrieveModelMixin,
-                  DestroyModelMixin,
-                  GenericViewSet):
+                RetrieveModelMixin,
+                DestroyModelMixin,
+                GenericViewSet):
     queryset = Cart.objects.prefetch_related('items__product').all()
     serializer_class = CartSerializer
 
