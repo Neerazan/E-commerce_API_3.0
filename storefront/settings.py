@@ -188,3 +188,5 @@ DEFAULT_FORM_EMAIL = 'from@nirajan.com'
 ADMINS = [
     ('Nirajan', 'admin@nirajan.com')
 ]
+
+CELERY_BROKER_URL = 'redis://localhost:6379/1'
