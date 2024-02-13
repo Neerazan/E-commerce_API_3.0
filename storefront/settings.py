@@ -181,3 +181,7 @@ EMAIL_HOST_USER = ''
 EMAIL_HOST_PASSWORD = ''
 EMAIL_PORT = 2525
 DEFAULT_FORM_EMAIL = 'form@nirajan.com'
+
+ADMINS = [
+    ('Nirajan', 'admin@nirajan.com')
+]
