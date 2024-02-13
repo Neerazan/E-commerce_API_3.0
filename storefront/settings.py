@@ -175,12 +175,15 @@ SIMPLE_JWT = {
     'ACCESS_TOKEN_LIFETIME': timedelta(days=1)
 }
 
+
+
+# Setting for setting Fake SMTP server (SMTP4DEV)
 EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
 EMAIL_HOST = 'localhost'
 EMAIL_HOST_USER = ''
 EMAIL_HOST_PASSWORD = ''
 EMAIL_PORT = 2525
-DEFAULT_FORM_EMAIL = 'form@nirajan.com'
+DEFAULT_FORM_EMAIL = 'from@nirajan.com'
 
 ADMINS = [
     ('Nirajan', 'admin@nirajan.com')
