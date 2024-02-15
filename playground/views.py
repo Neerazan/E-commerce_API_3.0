@@ -1,11 +1,12 @@
 from django.core.cache import cache
+from django.views.decorators.cache import cache_page
 from django.shortcuts import render
 import requests
 # from .tasks import notify_customers
 # from django.core.mail import EmailMessage, send_mail, mail_admins, BadHeaderError
 # from templated_mail.mail import BaseEmailMessage
 
-
+@cache_page(5*60)
 def say_hello(request):
     # try:
         # send_mail('This is Subject', 'This is Message', 'from@nirajan.com', ['bob@nirajan.com'])
@@ -31,10 +32,7 @@ def say_hello(request):
 
 
     #Code for caching
-    key = 'httpbin_result'
-    if cache.get('httpbin_result') is None:
-        response = requests.get('https://httpbin.org/delay/3')
-        data = response.json()
-        cache.set(key, data)
+    response = requests.get('https://httpbin.org/delay/3')
+    data = response.json()
 
-    return render(request, 'hello.html', {'name': cache.get(key)})
+    return render(request, 'hello.html', {'name': data})
