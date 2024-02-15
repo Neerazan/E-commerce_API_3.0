@@ -1,7 +1,10 @@
 from rest_framework.test import APIClient
 from django.contrib.auth.models import User
 from rest_framework import status
+from model_bakery import baker
 import pytest
+
+from store.models import Collection
 
 
 
@@ -64,3 +67,23 @@ class TestCreateCollection:
         #Assert
         assert response.status_code == status.HTTP_201_CREATED
         assert response.data['id'] > 0
+
+
+
+@pytest.mark.django_db 
+class TestRetriveCollection:
+    def test_if_collection_exists_returns_200(self, api_client:APIClient):
+        #Arrange -> in this part we need to create collection objects
+                # To retrive data we need data in database if database
+                # is empty it throws error so we need to create collection data.
+                # For this we can use model-bakery library, if there is any error
+                # in createa data api the retrive collection does not get any error
+        collection = baker.make(Collection)
+        response =  api_client.get(f'/store/collections/{collection.id}/')
+
+        assert response.status_code == status.HTTP_200_OK
+        assert response.data == {
+            'id': collection.id,
+            'title': collection.title,
+            'products_count':0
+        }
