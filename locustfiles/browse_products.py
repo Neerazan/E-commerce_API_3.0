@@ -4,7 +4,7 @@ from random import randint
 
 class WebsiteUser(HttpUser):
     wait_time = between(1,5)
-    
+
     @task(2)
     def view_products(self):
         collection_id = randint(3,6)
@@ -21,7 +21,7 @@ class WebsiteUser(HttpUser):
 
     @task(1)
     def add_to_cart(self):
-        product_id = (1, 10)
+        product_id = randint(1, 10)
         self.client.post(f'/store/carts/{self.cart_id}/items/',
                         name = '/store/carts/items',
                         json={
