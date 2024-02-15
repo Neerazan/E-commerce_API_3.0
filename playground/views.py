@@ -37,4 +37,4 @@ def say_hello(request):
         data = response.json()
         cache.set(key, data)
 
-    return render(request, 'hello.html', {'name': 'Chlorine'})
+    return render(request, 'hello.html', {'name': cache.get(key)})
