@@ -1,3 +1,4 @@
+from django.core.cache import cache
 from django.shortcuts import render
 import requests
 # from .tasks import notify_customers
@@ -30,6 +31,10 @@ def say_hello(request):
 
 
     #Code for caching
-    requests.get('https://httpbin.org/delay/3')
+    key = 'httpbin_result'
+    if cache.get('httpbin_result') is None:
+        response = requests.get('https://httpbin.org/delay/3')
+        data = response.json()
+        cache.set(key, data)
 
     return render(request, 'hello.html', {'name': 'Chlorine'})
