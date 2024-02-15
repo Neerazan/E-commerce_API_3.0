@@ -1,5 +1,6 @@
 from django.shortcuts import render
-from .tasks import notify_customers
+import requests
+# from .tasks import notify_customers
 # from django.core.mail import EmailMessage, send_mail, mail_admins, BadHeaderError
 # from templated_mail.mail import BaseEmailMessage
 
@@ -25,6 +26,10 @@ def say_hello(request):
     #     pass
 
     # Code for celery
-    notify_customers.delay('This is test message..')
+    # notify_customers.delay('This is test message..')
 
-    return render(request, 'hello.html', {'name': 'Mosh'})
+
+    #Code for caching
+    requests.get('https://httpbin.org/delay/3')
+
+    return render(request, 'hello.html', {'name': 'Chlorine'})
