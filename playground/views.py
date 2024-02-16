@@ -4,6 +4,7 @@ from rest_framework.views import APIView
 from django.shortcuts import render
 from django.utils.decorators import method_decorator
 import requests
+import logging
 # from .tasks import notify_customers
 # from django.core.mail import EmailMessage, send_mail, mail_admins, BadHeaderError
 # from templated_mail.mail import BaseEmailMessage
@@ -42,9 +43,18 @@ import requests
 
 
 #Cache in Class Base view
+
+logger = logging.getLogger(__name__)
+
 class HelloView(APIView):
-    @method_decorator(cache_page(5*60))
+    # @method_decorator(cache_page(5*60))
     def get(self, request):
-        response = requests.get('https://httpbin.org/delay/3')
-        data = response.json()
+        try:
+            logger.info("Calling HttpBin")
+            response = requests.get('https://httpbin.org/delay/3')
+            logger.info('Received the response')
+            data = response.json()
+        except requests.ConnectionError:
+            logger.critical('Can not get response from HttpBin')
+
         return render(request, 'hello.html', {'name': data})
