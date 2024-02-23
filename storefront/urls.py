@@ -47,7 +47,6 @@ path("reset-password-confirm/<str:uid>/<str:token>/", UserViewSet.as_view({"post
 
 urlpatterns += custom_djsoer_endpoints
 
-
 if settings.DEBUG:
     urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
     urlpatterns += [path('silk/', include('silk.urls', namespace='silk'))]

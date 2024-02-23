@@ -1,14 +1,14 @@
-body { 
+body {
   margin: 0;
+  font-family: "Cascadia Code", monospace;
+  background-color: #f3f8ff;
 }
 
-.home-page { 
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  background-color: #1ec8aa;
+.home-page {
+  background-color: #f3f8ff;
   height: 100vh;
   width: 100vw;
+  color: #49108b;
 }
 
 .logo {
