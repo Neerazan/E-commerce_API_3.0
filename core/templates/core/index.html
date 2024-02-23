@@ -41,7 +41,7 @@
           </div>
         </div>
 
-        <div class="collections">
+        <div class="products">
           <h4>Product Endpoints</h4>
           <div class="urls">
             <ul>
@@ -55,6 +55,20 @@
             </ul>
           </div>
         </div>
+
+        <div class="carts">
+          <h4>Cart Endpoints</h4>
+          <div class="urls">
+            <ul>
+              <li>
+                <a href="{% url 'cart-list' %}">/carts/</a>
+              </li>
+
+              <li>
+                <a href="{% url 'cart-detail' 6 %}">/cart/uid/</a>
+              </li>
+            </ul>
+          </div>
       </div>
     </div>
 
