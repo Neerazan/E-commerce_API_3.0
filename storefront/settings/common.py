@@ -151,7 +151,16 @@ DJOSER = {
     'SERIALIZERS': {
         'user_create': 'core.serializers.UserCreateSerializer',
         'current_user': 'core.serializers.UserSerializer',
-    }
+    },
+
+    'ACTIVATION_URL': '/activate/{uid}/{token}',
+    'PASSWORD_RESET_CONFIRM_URL': '/password-reset/{uid}/{token}',
+    'USERNAME_RESET_CONFIRM_URL': '/username-reset/{uid}/{token}',
+    'SEND_ACTIVATION_EMAIL': True,
+    'SEND_CONFIRMATION_EMAIL': True,
+    'PASSWORD_CHANGED_EMAIL_CONFIRMATION': True,
+    'USERNAME_CHANGED_EMAIL_CONFIRMATION': True,
+    'LOGOUT_ON_PASSWORD_CHANGE': True
 }
 
 SIMPLE_JWT = {
@@ -168,6 +177,7 @@ EMAIL_HOST_USER = ''
 EMAIL_HOST_PASSWORD = ''
 EMAIL_PORT = 2525
 DEFAULT_FORM_EMAIL = 'from@nirajan.com'
+# EMAIL_USE_TLS = True
 
 ADMINS = [
     ('Nirajan', 'admin@nirajan.com')
