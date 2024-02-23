@@ -18,6 +18,8 @@ from django.conf.urls.static import static
 from django.contrib import admin
 from django.urls import path, include
 import debug_toolbar
+from djoser.views import UserViewSet
+from rest_framework_simplejwt.views import TokenObtainPairView
 
 admin.site.site_header = 'Storefront Admin'
 admin.site.index_title = 'Admin'
@@ -27,13 +29,24 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('playground/', include('playground.urls')),
     path('store/', include('store.urls')),
-    path('auth/', include('djoser.urls')),
-    path('auth/', include('djoser.urls.jwt')),
+    # path('auth/', include('djoser.urls')),
+    # path('auth/', include('djoser.urls.jwt')),
     path('__debug__/', include(debug_toolbar.urls)),
 ]
 
 
+custom_djsoer_endpoints = [
+path('register/', UserViewSet.as_view({'post': 'create'}), name="register"),
+path("login/", TokenObtainPairView.as_view(), name="login"),
+path("resend-activation/", UserViewSet.as_view({"post": "resend_activation"}), name="resend_activation"),
+path("activation/<str:uid>/<str:token>/", UserViewSet.as_view({"post": "activate"}), name="activate"),
+path("reset-password/", UserViewSet.as_view({"post": "reset_password"}), name="reset_password"),
+path("reset-password-confirm/<str:uid>/<str:token>/", UserViewSet.as_view({"post": "reset_password_confirm"}), name="reset_password_confirm"),
+]
+
+urlpatterns += custom_djsoer_endpoints
+
+
 if settings.DEBUG:
     urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
-
     urlpatterns += [path('silk/', include('silk.urls', namespace='silk'))]
