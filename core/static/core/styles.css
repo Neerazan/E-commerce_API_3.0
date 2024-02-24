@@ -30,6 +30,10 @@ body {
   font-size: 18px;
   display: flex;
   line-height: 20px;
+  position: fixed;
+  width: 100%;
+  left: 0;
+  top: 0;
 }
 
 .home-page > div:first-child > p:hover {
@@ -41,7 +45,7 @@ body {
   color: black;
   font-size: 30px;
   font-weight: 300;
-  margin-top: 20px;
+  margin-top: 80px;
 }
 
 .prettybox {
