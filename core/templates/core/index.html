@@ -48,7 +48,23 @@
             </li>
 
             <li>
-              <a href="{% url 'products-detail' 6 %}">/products/6/</a>
+              <a href="{% url 'products-detail' 648 %}">/products/648/</a>
+            </li>
+
+            <li>
+              <a href="{% url 'product-images-list' 648 %}">/products/648/images/</a>
+            </li>
+
+            <li>
+              <a href="{% url 'product-images-detail' product_pk=648 pk=1 %}">/products/648/images/1/<a>
+            </li>
+
+            <li>
+              <a href="{% url 'product-reviews-list' 648 %}">/products/648/reviews/<a>
+            </li>
+
+            <li>
+              <a href="{% url 'product-reviews-detail' product_pk=648 pk=1 %}">/products/648/reviews/1/<a>
             </li>
           </ul>
         </div>
@@ -80,7 +96,7 @@
         </div>
       </div>
 
-      <div class="products">
+      <div class="customers">
         <h4>Customer Endpoints</h4>
         <div class="urls">
           <ul>
@@ -97,9 +113,8 @@
             </li>
 
             <li>
-              <a href="{% url 'customer-history' '2' %}">/customers/2/history</a>
+              <a href="{% url 'customer-history' '2' %}">/customers/2/history/</a>
             </li>
-
           </ul>
         </div>
       </div>
