@@ -61,3 +61,8 @@ a {
   color: #195f91;
   /* text-decoration: none; */
 }
+
+.under_construction {
+  color: red;
+  font-size: 14px;
+}
