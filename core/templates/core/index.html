@@ -79,6 +79,30 @@
           </ul>
         </div>
       </div>
+
+      <div class="products">
+        <h4>Customer Endpoints</h4>
+        <div class="urls">
+          <ul>
+            <li>
+              <a href="{% url 'customer-list' %}">/customers/</a>
+            </li>
+
+            <li>
+              <a href="{% url 'customer-me' %}">/customers/me/</a>
+            </li>
+
+            <li>
+              <a href="{% url 'customer-detail' '2' %}">/customers/2/</a>
+            </li>
+
+            <li>
+              <a href="{% url 'customer-history' '2' %}">/customers/2/history</a>
+            </li>
+
+          </ul>
+        </div>
+      </div>
     </div>
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
