@@ -24,6 +24,38 @@
     <div class="endpoints">
       <h2>Endpoints</h2>
       <hr />
+
+      <div class="Authentication">
+        <h4>Authentication</h4>
+        <div class="urls">
+          <ul>
+            <li>
+              <a href="{% url 'register' %}">/register/</a>
+            </li>
+
+            <li>
+              <a href="{% url 'login' %}">/login/</a>
+            </li>
+
+            <li>
+              <a href="{% url 'users_activation' %}">/users/activation/</a>
+            </li>
+
+            <li>
+              <a href="{% url 'reset_password' %}">/users/reset_password/</a>
+            </li>
+
+            <li>
+              <a href="{% url 'reset_password_confirm' %}">/users/reset_password_confirm/</a>
+            </li>
+
+            <li>
+              <a href="{% url 'change_password' %}">/users/change_password/</a>
+            </li>
+          </ul>
+        </div>
+      </div>
+
       <div class="collections">
         <h4>Collection Endpoints</h4>
         <div class="urls">

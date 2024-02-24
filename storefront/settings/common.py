@@ -34,6 +34,7 @@ INSTALLED_APPS = [
     'django_filters',
     'rest_framework',
     'djoser',
+    # 'rest_framework.authtoken',
     'silk',
     'playground',
     'debug_toolbar',
@@ -160,7 +161,7 @@ DJOSER = {
     'SEND_CONFIRMATION_EMAIL': True,
     'PASSWORD_CHANGED_EMAIL_CONFIRMATION': True,
     'USERNAME_CHANGED_EMAIL_CONFIRMATION': True,
-    'LOGOUT_ON_PASSWORD_CHANGE': True
+    # 'LOGOUT_ON_PASSWORD_CHANGE': True,
 }
 
 SIMPLE_JWT = {
