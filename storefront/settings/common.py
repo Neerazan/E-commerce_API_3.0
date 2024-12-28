@@ -34,10 +34,10 @@ INSTALLED_APPS = [
     'django_filters',
     'rest_framework',
     'djoser',
-    # 'rest_framework.authtoken',
     'silk',
-    'playground',
+    # 'rest_framework.authtoken',
     'debug_toolbar',
+    'drf_spectacular',
     'store',
     'tags',
     'likes',
@@ -185,13 +185,7 @@ ADMINS = [
 ]
 
 CELERY_BROKER_URL = 'redis://localhost:6379/1'
-CELERY_BEAT_SCHEDULE = {
-    'notify_customers': {
-        'task': 'playground.tasks.notify_customers',
-        'schedule': 15,
-        'args': ['This is perodic task']
-    }
-}
+
 
 CACHES = {
     "default": {
@@ -230,4 +224,31 @@ LOGGING = {
             'style': '{'
         }
     }
+}
+
+REST_FRAMEWORK = {
+    'DEFAULT_SCHEMA_CLASS': 'drf_spectacular.openapi.AutoSchema',
+}
+
+SPECTACULAR_SETTINGS = {
+    'TITLE': 'E-Commerce API',
+    'DESCRIPTION': 'api documentation of e-commerce',
+    'VERSION': '1.0.0',
+    'SERVE_INCLUDE_SCHEMA': False,
+}
+
+SPECTACULAR_SETTINGS = {
+    'TITLE': 'E-Commerce API',
+    'DESCRIPTION': 'API documentation of E-Commerce API',
+    'VERSION': '1.0.0',
+    'SERVE_INCLUDE_SCHEMA': False,
+    'TAGS': [
+        {'name': 'Carts', 'description': 'Carts related endpoints'},
+        {'name': 'Cart Items', 'description': 'Cart Items related endpoints'},
+        {'name': 'Collections', 'description': 'Collections related endpoints'},
+        {'name': 'Customers', 'description': 'Customers related endpoints'},
+        {'name': 'Orders', 'description': 'Orders related endpoints'},
+        {'name': 'Products', 'description': 'Products related endpoints'},
+        {'name': 'Reviews', 'description': 'Reviews related endpoints'},
+    ],
 }

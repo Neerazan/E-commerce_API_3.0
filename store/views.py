@@ -10,12 +10,14 @@ from rest_framework.permissions import AllowAny, DjangoModelPermissions, DjangoM
 from rest_framework.response import Response
 from rest_framework.viewsets import ModelViewSet, GenericViewSet
 from rest_framework import status
+from drf_spectacular.utils import extend_schema
 from .filters import ProductFilter
 from .models import Cart, CartItem, Collection, Customer, Order, OrderItem, Product, Review, ProductImage
 
 from .serializers import AddCartItemSerializer, CartItemSerializer, CartSerializer, CollectionSerializer, CreateOrderSerializer, CustomerSerializer, OrderSerializer, ProductSerializer, ReviewSerializer, UpdateCartItemSerializer, UpdateOrderSerializer, ProductImageSerializer
 
 
+@extend_schema(tags=['Products'])
 class ProductViewSet(ModelViewSet):
     queryset = Product.objects.prefetch_related('images').all()
     serializer_class = ProductSerializer
@@ -36,6 +38,7 @@ class ProductViewSet(ModelViewSet):
         return super().destroy(request, *args, **kwargs)
 
 
+@extend_schema(tags=['Collections'])
 class CollectionViewSet(ModelViewSet):
     queryset = Collection.objects.annotate(
         products_count=Count('products')).all()
@@ -48,7 +51,7 @@ class CollectionViewSet(ModelViewSet):
 
         return super().destroy(request, *args, **kwargs)
 
-
+@extend_schema(tags=['Reviews'])
 class ReviewViewSet(ModelViewSet):
     serializer_class = ReviewSerializer
 
@@ -58,7 +61,7 @@ class ReviewViewSet(ModelViewSet):
     def get_serializer_context(self):
         return {'product_id': self.kwargs['product_pk']}
 
-
+@extend_schema(tags=['Carts'])
 class CartViewSet(CreateModelMixin,
                 RetrieveModelMixin,
                 DestroyModelMixin,
@@ -66,7 +69,7 @@ class CartViewSet(CreateModelMixin,
     queryset = Cart.objects.prefetch_related('items__product').all()
     serializer_class = CartSerializer
 
-
+@extend_schema(tags=['Cart Items'])
 class CartItemViewSet(ModelViewSet):
     http_method_names = ['get', 'post', 'patch', 'delete']
 
@@ -85,7 +88,7 @@ class CartItemViewSet(ModelViewSet):
             .filter(cart_id=self.kwargs['cart_pk']) \
             .select_related('product')
 
-
+@extend_schema(tags=['Customers'])
 class CustomerViewSet(ModelViewSet):
     queryset = Customer.objects.all()
     serializer_class = CustomerSerializer
@@ -108,7 +111,7 @@ class CustomerViewSet(ModelViewSet):
             serializer.save()
             return Response(serializer.data)
 
-
+@extend_schema(tags=['Orders'])
 class OrderViewSet(ModelViewSet):
     http_method_names = ['get', 'post', 'patch', 'delete', 'head', 'options']
 
