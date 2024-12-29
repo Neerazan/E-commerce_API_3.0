@@ -19,6 +19,7 @@ django-redis = "*"
 pillow = "*"
 whitenoise = "*"
 drf-spectacular = "*"
+python-decouple = "*"
 
 [dev-packages]
 autopep8 = "*"
