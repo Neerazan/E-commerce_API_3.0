@@ -261,6 +261,7 @@ SPECTACULAR_SETTINGS = {
         {'name': 'Customers', 'description': 'Customers related endpoints'},
         {'name': 'Orders', 'description': 'Orders related endpoints'},
         {'name': 'Products', 'description': 'Products related endpoints'},
+        {'name': 'Product Images', 'description': 'Product Images related endpoints'},
         {'name': 'Reviews', 'description': 'Reviews related endpoints'},
     ],
 }

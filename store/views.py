@@ -146,7 +146,7 @@ class OrderViewSet(ModelViewSet):
             'id').get(user_id=user.id)
         return Order.objects.filter(customer_id=customer_id)
 
-
+@extend_schema(tags=['Product Images'])
 class ProductImageViewSet(ModelViewSet):
     serializer_class = ProductImageSerializer
 
